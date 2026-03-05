@@ -1,12 +1,12 @@
 /**
  * Variables Configuration
  * =======================
- * 
+ *
  * CENTRAL PLACE TO DEFINE ALL SHARED VARIABLES
- * 
+ *
  * This file defines all variables that can be shared across sections.
  * AI agents should read this file to understand what variables are available.
- * 
+ *
  * USAGE:
  * 1. Define variables here with their default values and metadata
  * 2. Use them in any section with: const x = useVar('variableName', defaultValue)
@@ -53,108 +53,140 @@ export interface VariableDefinition {
 
 /**
  * =====================================================
- * 🎯 DEFINE YOUR VARIABLES HERE
+ * 🎯 DISTANCE FORMULA LESSON VARIABLES
  * =====================================================
- * 
- * SUPPORTED TYPES:
- * 
- * 1. NUMBER (slider):
- *    { defaultValue: 5, type: 'number', min: 0, max: 10, step: 1 }
- * 
- * 2. TEXT (free text):
- *    { defaultValue: 'Hello', type: 'text', placeholder: 'Enter text...' }
- * 
- * 3. SELECT (dropdown):
- *    { defaultValue: 'sine', type: 'select', options: ['sine', 'cosine', 'tangent'] }
- * 
- * 4. BOOLEAN (toggle):
- *    { defaultValue: true, type: 'boolean' }
- * 
- * 5. ARRAY (list of numbers):
- *    { defaultValue: [1, 2, 3], type: 'array' }
- * 
- * 6. OBJECT (complex data):
- *    { defaultValue: { x: 5, y: 10 }, type: 'object', schema: '{ x: number, y: number }' }
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
-    // ========================================
-    // ADD YOUR VARIABLES HERE
-    // ========================================
-
-    // Uncomment and modify these examples for your lesson:
-
-    /*
     // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
+    // SECTION 1: Introduction - Point Coordinates
     // ─────────────────────────────────────────
-    myValue: {
+    x1: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'x₁',
+        description: 'x-coordinate of point A',
+        min: -8,
+        max: 8,
+        step: 1,
+        color: '#ef4444', // red
+    },
+    y1: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'y₁',
+        description: 'y-coordinate of point A',
+        min: -8,
+        max: 8,
+        step: 1,
+        color: '#ef4444', // red
+    },
+    x2: {
         defaultValue: 5,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
-        min: 0,
-        max: 10,
-        step: 0.5,
+        label: 'x₂',
+        description: 'x-coordinate of point B',
+        min: -8,
+        max: 8,
+        step: 1,
+        color: '#3b82f6', // blue
+    },
+    y2: {
+        defaultValue: 6,
+        type: 'number',
+        label: 'y₂',
+        description: 'y-coordinate of point B',
+        min: -8,
+        max: 8,
+        step: 1,
+        color: '#3b82f6', // blue
     },
 
     // ─────────────────────────────────────────
-    // TEXT - Free text input
+    // SECTION 2: Right Triangle Connection
     // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
-        type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
-    },
-
-    // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
-    // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
-        type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
-    },
-
-    // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
-    // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
+    showTriangle: {
+        defaultValue: false,
         type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
+        label: 'Show Triangle',
+        description: 'Toggle to show/hide the right triangle',
+    },
+    triangleHighlight: {
+        defaultValue: '',
+        type: 'linkedHighlight',
+        label: 'Triangle Part Highlight',
+        description: 'Active highlight for triangle parts',
+        color: '#8b5cf6',
     },
 
     // ─────────────────────────────────────────
-    // ARRAY - List of numbers
+    // SECTION 3: Distance Formula
     // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
+    deltaX: {
+        defaultValue: 4,
+        type: 'number',
+        label: 'Δx',
+        description: 'Horizontal distance (x2 - x1)',
+        color: '#f97316', // orange
+    },
+    deltaY: {
+        defaultValue: 4,
+        type: 'number',
+        label: 'Δy',
+        description: 'Vertical distance (y2 - y1)',
+        color: '#8b5cf6', // violet
     },
 
     // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
+    // SECTION 4: Practice Questions
     // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
+    answer_horizontal_distance: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Horizontal Distance Answer',
+        correctAnswer: '4',
+        placeholder: '?',
+        color: '#f97316',
     },
-    */
+    answer_vertical_distance: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Vertical Distance Answer',
+        correctAnswer: '4',
+        placeholder: '?',
+        color: '#8b5cf6',
+    },
+    answer_distance_squared: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Distance Squared Answer',
+        correctAnswer: '32',
+        placeholder: '?',
+        color: '#3cc499',
+    },
+    answer_final_distance: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Final Distance Answer',
+        correctAnswer: '5.66',
+        placeholder: '?',
+        color: '#6366f1',
+    },
+    answer_practice_1: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Practice 1 Answer',
+        correctAnswer: '5',
+        placeholder: '?',
+        color: '#3b82f6',
+    },
+    answer_practice_2: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Practice 2 Answer',
+        correctAnswer: '10',
+        placeholder: '?',
+        color: '#3b82f6',
+    },
 };
 
 /**
